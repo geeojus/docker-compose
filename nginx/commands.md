@@ -4,6 +4,9 @@
 ```
 
 ```
+    docker run -d --name dc-nginx -p 8080:80 dc-nginx
+
+   Options:
     docker run -p 8080:80 --name dc-nginx1 dc-nginx 
 
     docker run -it dc-nginx /bin/bash
