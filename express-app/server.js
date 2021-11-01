@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.send("Welcome to Express!!!")
 })
 
+app.get('/expdocs', (req, res) => {
+  res.send("Welcome to Express Docs!!!")
+})
+
 app.listen(port, () => {
   console.log(`Example express app listening at http://${hostname}:${port}`)
 })
