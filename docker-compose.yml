@@ -1,0 +1,43 @@
+version: "3.9"
+
+networks:
+  dc-compose:
+
+services:
+  py-app: # http://py-app:8081
+    container_name: dc-py-app
+    build:
+      context: ./py-app
+      dockerfile: Dockerfile.py-app
+    # environment:
+    #   - PORT=8081
+    expose:
+      - 8081
+    command: /usr/local/bin/uvicorn server:app --host 0.0.0.0 --port 8081
+    networks:
+      - dc-compose
+
+  express-app: # http://express-app:9081
+    container_name: dc-express-app
+    build:
+      context: ./express-app
+      dockerfile: Dockerfile.express-app
+    environment:
+      - PORT=9081
+    expose:
+      - 9081
+    networks:
+      - dc-compose
+
+  nginx:
+    container_name: dc-nginx-server
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 8080:80
+    depends_on:
+      - py-app
+      - express-app
+    networks:
+      - dc-compose
