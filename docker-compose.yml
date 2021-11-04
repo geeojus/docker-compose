@@ -29,6 +29,18 @@ services:
     networks:
       - dc-compose
 
+  go-app: # http://go-app:8090
+    container_name: dc-go-app
+    build:
+      context: ./go-app
+      dockerfile: Dockerfile.go-app
+    environment:
+      - PORT=8090
+    expose:
+      - 8090
+    networks:
+      - dc-compose
+
   nginx:
     container_name: dc-nginx-server
     build:
@@ -39,5 +51,6 @@ services:
     depends_on:
       - py-app
       - express-app
+      - go-app
     networks:
       - dc-compose
