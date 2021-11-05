@@ -16,6 +16,9 @@ services:
     command: /usr/local/bin/uvicorn server:app --host 0.0.0.0 --port 8081
     networks:
       - dc-compose
+    volumes:
+      - ./data:/app/data
+      - dc-datavol:/app/mydatavol
 
   express-app: # http://express-app:9081
     container_name: dc-express-app
@@ -28,6 +31,8 @@ services:
       - 9081
     networks:
       - dc-compose
+    volumes:
+      - ./data:/app/data
 
   go-app: # http://go-app:8090
     container_name: dc-go-app
@@ -40,6 +45,8 @@ services:
       - 8090
     networks:
       - dc-compose
+    volumes:
+      - ./data:/app/data
 
   nginx:
     container_name: dc-nginx-server
@@ -54,3 +61,8 @@ services:
       - go-app
     networks:
       - dc-compose
+    volumes:
+      - ./data:/www/static/
+
+volumes:
+  dc-datavol:
