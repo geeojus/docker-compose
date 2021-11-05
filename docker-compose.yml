@@ -4,6 +4,17 @@ networks:
   dc-compose:
 
 services:
+  db:
+    container_name: dc-db
+    image: postgres
+    env_file: .env
+    expose:
+      - 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - dc-compose
+
   py-app: # http://py-app:8081
     container_name: dc-py-app
     build:
@@ -66,3 +77,4 @@ services:
 
 volumes:
   dc-datavol:
+  postgres_data:
