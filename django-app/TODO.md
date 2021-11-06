@@ -4,3 +4,4 @@
     - `DJANGO_SUPERUSER_USERNAME`
     - `DJANGO_SUPERUSER_PASSWORD`
     - `DJANGO_SUPERUSER_EMAIL`
+- Setup Static files `python manage.py collectstatic --noinput`

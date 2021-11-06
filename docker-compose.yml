@@ -86,6 +86,8 @@ services:
         - .env-db
     networks:
       - dc-compose
+    volumes:
+      - ./staticfiles:/app/staticfiles/
     depends_on:
       - db
 
@@ -104,7 +106,7 @@ services:
     networks:
       - dc-compose
     volumes:
-      - ./data:/www/static/
+      - ./staticfiles:/www/static/
 
 volumes:
   dc-datavol:
