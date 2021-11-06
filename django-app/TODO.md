@@ -1,0 +1,6 @@
+- Get a PROD DB -> Postgres 
+- Run migrate `python manage.py migrate --noinput`
+- Create a superuser `python manage.py createsuperuser --noinput`
+    - `DJANGO_SUPERUSER_USERNAME`
+    - `DJANGO_SUPERUSER_PASSWORD`
+    - `DJANGO_SUPERUSER_EMAIL`
