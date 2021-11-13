@@ -1,3 +1,9 @@
 django>=3.2.0,<3.3.0
+
+celery
+django-celery-beat
+django_celery_results
+django-dotenv
 gunicorn
 psycopg2-binary
+redis

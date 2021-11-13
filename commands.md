@@ -52,11 +52,20 @@ docker pull postgres:latest
 docker run --name postgres -p 6543:5432 -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mytestpw postgres
 
 docker run --name postgres -p 6543:5432 --env-file .env postgres
+
+docker compose -f docker-compose.dev.yml up --build -d
+
+docker compose up --build -d
+
+docker compose up --build
+
+docker compose down
+
 ```
 
 Connect to DB
 ```
     psql -h <db_host> -p <db_port> -d <db_name> -U <username> -W
 ```
-> `psql -h localhost -p 5432 -d dc-compose -U dcuser -W`
+> `psql -h localhost -p 5432 -d dckcompose -U dcuser -W`
 

@@ -1,0 +1,33 @@
+version: "3.9"
+
+networks:
+  dc-compose:
+
+services:
+  db:
+    container_name: dc-db
+    image: postgres
+    env_file: .env-db
+    restart: always
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - dc-compose
+
+  redis:
+    container_name: dc-redis
+    image: redis
+    restart: always
+    ports:
+      - 6380:6379
+    volumes:
+      - redis_data:/data/
+    entrypoint: redis-server --appendonly yes
+    networks:
+      - dc-compose
+  
+volumes:
+  postgres_data:
+  redis_data:

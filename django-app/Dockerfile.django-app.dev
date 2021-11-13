@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+
+COPY . /app
+WORKDIR /app
+
+RUN pip install pip --upgrade
+RUN pip install -r requirements.txt
+
+RUN chmod +x run.sh
+
+ENV USE_DOTENV_PKG=1
+
+CMD [ "./run.sh" ]

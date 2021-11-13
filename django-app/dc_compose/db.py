@@ -1,13 +1,5 @@
 import os
 
-'''
-POSTGRES_DB=dc-compose
-POSTGRES_USER=dcuser
-POSTGRES_PASSWORD=dcsecretpwd
-POSTGRES_HOST=db
-POSTGRES_PORT=5432
-'''
-
 POSTGRES_DB         = os.environ.get("POSTGRES_DB")
 POSTGRES_USER       = os.environ.get("POSTGRES_USER")
 POSTGRES_PASSWORD   = os.environ.get("POSTGRES_PASSWORD")

@@ -91,6 +91,25 @@ services:
     depends_on:
       - db
 
+  django-celery:
+    container_name: dc-django-celery
+    build:
+      context: ./django-app
+      dockerfile: Dockerfile.django-app
+    environment:
+      - REDIS_HOST=redis
+    env_file: 
+        - ./django-app/.env-dj
+        - .env-db
+    command: ./run-worker.sh
+    networks:
+      - dc-compose
+    volumes:
+      - ./staticfiles:/app/staticfiles/
+    depends_on:
+      - db
+      - django-app
+
   nginx:
     container_name: dc-nginx-server
     build:
