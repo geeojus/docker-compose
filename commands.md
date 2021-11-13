@@ -69,3 +69,57 @@ Connect to DB
 ```
 > `psql -h localhost -p 5432 -d dckcompose -U dcuser -W`
 
+```
+```
+
+## Pushing to Docker Hub
+
+### 1. Tag images for dockerhub:
+
+Tags must be:
+`docker-hub-username`/`reponame`
+or
+`docker-hub-username`/`reponame:v1`
+
+Such as:
+
+```
+    docker build -t geetharg/myrepo -f Dockerfile .
+
+    docker build -t geetharg/dockerdc-express-app -f Dockerfile.express-app .
+
+```
+
+or 
+
+```
+    docker build -t geetharg/myrepo:v3 -f Dockerfile .
+```
+
+or
+
+```
+    docker image ls
+```
+I have an image with the id of `c762835ed3ea` that I am going to tag to `geetharg/dockerdc-express-app:v1.0`
+
+```
+    docker tag c762835ed3ea geetharg/dockerdc-express-app:v1
+```
+
+The format is 
+```
+    docker tag <built-image-id> <new-tag>
+```
+
+### 2. Push with new tag:
+
+```
+    docker push <new-tag>
+```
+
+like
+
+```
+    docker push geetharg/dockerdc-express-app:v1
+```
